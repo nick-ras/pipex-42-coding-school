@@ -1,0 +1,3 @@
+[submodule "libftprintf"]
+	path = libftprintf
+	url = git@github.com:nick-ras/libftprintf.git
