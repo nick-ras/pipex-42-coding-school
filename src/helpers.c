@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nickras <nickras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:04:48 by nickras           #+#    #+#             */
-/*   Updated: 2022/09/08 14:46:45 by nickras          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:10:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
+/* if there is no envp, or argc is not 5, exit with error
+*/
 void	early_errors(int argc, char **envp)
 {
 	if (!envp)
@@ -26,6 +28,8 @@ void	early_errors(int argc, char **envp)
 	}
 }
 
+/* close all file descriptors, wait for both child processes to exit, then exit
+*/
 void	close_fds_wait_exit(int *fd, int *pipefd, pid_t pid1, pid_t pid2)
 {
 	int		status;
@@ -39,12 +43,16 @@ void	close_fds_wait_exit(int *fd, int *pipefd, pid_t pid1, pid_t pid2)
 	exit (0);
 }
 
+/* if open fails, print error and exit
+*/
 void	open_is_minus_one(void)
 {
 	perror("open doesnt work");
 	exit(2);
 }
 
+/* if fork fails, print error and exit
+*/
 void	fork_minus_one(pid_t pid)
 {
 	if (pid == -1)

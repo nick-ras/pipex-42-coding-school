@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pids.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nickras <nickras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:05:56 by nickras           #+#    #+#             */
-/*   Updated: 2022/09/08 15:11:16 by nickras          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:08:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
+/* Calls get_path to get the path of the command, then duplicates files to STDIN and STDOUT and then calls the execute function to execute functions. It also closed filedescriptors after duplication
+*/
 void	pid1_is_0(int *fd, int *pipefd, char *cmd, char **envp)
 {
 	char	*path;
@@ -31,6 +33,8 @@ void	pid1_is_0(int *fd, int *pipefd, char *cmd, char **envp)
 	ft_printf("first didnt exec\n");
 }
 
+/* the second child process, the gets the output from execve from first child, and then executes it into a file. It also closes filedescriptors after duplication
+*/
 void	pid2_is_0(int *fd, int *pipefd, char *argv, char **envp)
 {
 	char	*path;
@@ -52,6 +56,8 @@ void	pid2_is_0(int *fd, int *pipefd, char *argv, char **envp)
 	ft_printf("second  didnt exec\n");
 }
 
+/* find the index of envp where PATH is the first 4 characters and calls set_paths
+*/
 char	*get_path(char *arg_idx, char **envp)
 {
 	int		i;
@@ -67,6 +73,8 @@ char	*get_path(char *arg_idx, char **envp)
 	exit (2);
 }
 
+/* finds length of the path index of envp, allocates space and returns it
+*/
 char	*cmd_get_command(char *arg_idx)
 {
 	int		i;

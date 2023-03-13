@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   paths.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nickras <nickras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:05:22 by nickras           #+#    #+#             */
-/*   Updated: 2022/09/08 15:12:36 by nickras          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:02:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
+/* retun allocated space made to find correct path, and then return path
+*/
 char	*free_stuff_and_return(char **path_envp, char *addon, \
 char *arg_idx, char *path)
 {
@@ -25,6 +27,8 @@ char *arg_idx, char *path)
 	return (path);
 }
 
+/* retun allocated space made to find correct path, and then return path
+*/
 char	*free_stuff_and_return_cmd(char **path_envp, char *addon, \
 char *arg_idx, char *path)
 {
@@ -41,6 +45,8 @@ char *arg_idx, char *path)
 	return (path);
 }
 
+/* iterates through path_envp and checks if the path is valid, and if so, returns it
+*/
 char	*make_path_executable(char **path_envp, char *addon, \
 char *arg_idx, char *path)
 {
@@ -63,10 +69,8 @@ char *arg_idx, char *path)
 	return (NULL);
 }
 
-// write(2, path, ft_strlen(path));
-// 	perror("hi\n");
-// 	exit(2);
-
+/* if no path found, free and exit
+*/
 void	path__is_null_so_free(char **path_envp, char *addon)
 {
 	free_list(path_envp);
@@ -75,6 +79,8 @@ void	path__is_null_so_free(char **path_envp, char *addon)
 	exit (2);
 }
 
+/* from the "PATH" envp, get the path, splits all the paths into an array
+*/
 char	*set_paths(char *arg_idx, char *envp_index)
 {
 	char	**path_envp;

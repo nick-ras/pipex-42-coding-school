@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nickras <nickras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 18:04:56 by nickras           #+#    #+#             */
-/*   Updated: 2022/09/09 13:21:32 by nickras          ###   ########.fr       */
+/*   Updated: 2023/03/13 19:56:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #include "../pipex.h"
 
+/* makes argument array to be used with path to executable
+*/
 void	execute(char *cmd, char **envp, char *path)
 {
 	char	*options[3];
@@ -42,6 +44,8 @@ void	execute(char *cmd, char **envp, char *path)
 		free_list(split_cmd);
 }
 
+/* free function for list of strings
+*/
 void	free_list(char **path_envp)
 {
 	int	i;
@@ -56,6 +60,8 @@ void	free_list(char **path_envp)
 	free(path_envp);
 }
 
+/* get filedescriptorfor infile (the one you will read from) and return it
+*/
 int	fd_to_infile(char *argv)
 {
 	int	fd;
@@ -66,6 +72,8 @@ int	fd_to_infile(char *argv)
 	return (fd);
 }
 
+/* get filedescriptorfor outfile (the one you will write to) and return it
+*/
 int	fd_to_outfile(char *argv)
 {
 	int	fd;
