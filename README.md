@@ -52,13 +52,9 @@ make
 2. **Run the Program**
 Use the following command to run the program:
 
-./pipex infile "command1" "command2" ... "commandN" outfile
+./pipex infile (file you copy from) "command1" "command2" (the commands you use like 'cat') ... "commandN" outfile (file you copy to)
 
-**Arguments:**
-infile: The input file that contains the data you want to process.
-command1, command2, ..., commandN: The commands to run in a pipeline.
-outfile: The output file where the final result will be written.
-Example:
+**Example:**
 To use cat -e on the input file and then pass the result to grep a, and write the final output to outfile, run:
 
 ```bash
