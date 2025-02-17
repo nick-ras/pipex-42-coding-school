@@ -61,4 +61,4 @@ To use cat -e on the input file and then pass the result to grep a, and write th
 ./pipex infile "cat -e" "grep a" outfile
 ```
 The program will read from infile, run cat -e, then pass the output to grep a, and write the final result to outfile. If the outfile doesn't exist, it will be created.
-
+The program will search in the system for libraries so be creating and maybe use sed or sort or grep
